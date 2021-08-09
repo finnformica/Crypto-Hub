@@ -7,6 +7,22 @@ tickers_list = ["BTC","LTC","ETH","NEO","BNB","QTUM","EOS","SNT","BNT","GAS","BC
 
 currency_list = ["USD", "GBP"]
 
+
+class RegistrationForm(FlaskForm):
+    username = StringField('Username', validators=[DataRequired(), Length(min=2, max=20)])
+    email = StringField('Email', validators=[DataRequired(), Email()])
+    password = PasswordField('Password', validators=[DataRequired()])
+    confirm_password = PasswordField('Confirm Password', validators=[DataRequired(), EqualTo('password')])
+    submit = SubmitField('Sign Up')
+
+
+class LoginForm(FlaskForm):
+    email = StringField('Email', validators=[DataRequired(), Email()])
+    password = PasswordField('Password', validators=[DataRequired()])
+    remember = BooleanField('Remember Me')
+    submit = SubmitField('Login')
+
+
 class SpotTradeForm(FlaskForm):
     date = DateField('Date Executed', format='%d-%m-%Y', validators=[DataRequired()], default=datetime.utcnow())
     ticker1 = SelectField('Ticker 1', choices=tickers_list+currency_list, default='BTC')

@@ -27,7 +27,7 @@ class Spot(db.Model):
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
 
     def __repr__(self):
-        return f"Spot('{self.ticker1}', '{self.ticker2}', '{self.type}', '{self.date}')"
+        return f"Spot('{self.ticker1}', '{self.ticker2}', '{self.type}', '{self.price}', '{self.date}')"
 
 
 class Perpetual(db.Model):

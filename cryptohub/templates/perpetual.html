@@ -1,4 +1,182 @@
 {% extends "layout.html" %}
 {% block content %}
-  <h1>Perpetual Trades</h1>
+<h1>Perpetual Trades</h1>
+<div class="content-section">
+  <form method="POST" action="">
+    {{ form.hidden_tag() }}
+    <fieldset class="form-group">
+      <div class="form-group">
+        {{ form.ticker1.label(class="form-control-label") }}
+        {% if form.ticker1.errors %}
+        {{ form.ticker1(class="form-control form-control-lg is-invalid") }}
+        <div class="invalid-feedback">
+          {% for error in form.ticker1.errors %}
+          <span>{{ error }}</span>
+          {% endfor %}
+        </div>
+        {% else %}
+        {{ form.ticker1(class="form-control form-control-lg") }}
+        {% endif %}
+      </div>
+
+      <div class="form-group">
+        {{ form.ticker2.label(class="form-control-label") }}
+        {% if form.ticker2.errors %}
+        {{ form.ticker2(class="form-control form-control-lg is-invalid") }}
+        <div class="invalid-feedback">
+          {% for error in form.ticker2.errors %}
+          <span>{{ error }}</span>
+          {% endfor %}
+        </div>
+        {% else %}
+        {{ form.ticker2(class="form-control form-control-lg") }}
+        {% endif %}
+      </div>
+
+      <div class="form-group">
+        {{ form.type.label(class="form-control-label") }}
+        {% if form.type.errors %}
+        {{ form.type(class="form-control form-control-lg is-invalid") }}
+        <div class="invalid-feedback">
+          {% for error in form.type.errors %}
+          <span>{{ error }}</span>
+          {% endfor %}
+        </div>
+        {% else %}
+        {{ form.type(class="form-control form-control-lg") }}
+        {% endif %}
+      </div>
+
+      <div class="form-group">
+        {{ form.leverage.label(class="form-control-label") }}
+        {% if form.leverage.errors %}
+        {{ form.leverage(class="form-control form-control-lg is-invalid") }}
+        <div class="invalid-feedback">
+          {% for error in form.leverage.errors %}
+          <span>{{ error }}</span>
+          {% endfor %}
+        </div>
+        {% else %}
+        {{ form.leverage(class="form-control form-control-lg") }}
+        {% endif %}
+      </div>
+
+      <div class="form-group">
+        {{ form.balance.label(class="form-control-label") }}
+        {% if form.balance.errors %}
+        {{ form.balance(class="form-control form-control-lg is-invalid") }}
+        <div class="invalid-feedback">
+          {% for error in form.balance.errors %}
+          <span>{{ error }}</span>
+          {% endfor %}
+        </div>
+        {% else %}
+        {{ form.balance(class="form-control form-control-lg") }}
+        {% endif %}
+      </div>
+
+      <div class="form-group">
+        {{ form.percent_risked.label(class="form-control-label") }}
+        {% if form.percent_risked.errors %}
+        {{ form.percent_risked(class="form-control form-control-lg is-invalid") }}
+        <div class="invalid-feedback">
+          {% for error in form.percent_risked.errors %}
+          <span>{{ error }}</span>
+          {% endfor %}
+        </div>
+        {% else %}
+        {{ form.percent_risked(class="form-control form-control-lg") }}
+        {% endif %}
+      </div>
+
+      <div class="form-group">
+        {{ form.entry_price.label(class="form-control-label") }}
+        {% if form.entry_price.errors %}
+        {{ form.entry_price(class="form-control form-control-lg is-invalid") }}
+        <div class="invalid-feedback">
+          {% for error in form.entry_price.errors %}
+          <span>{{ error }}</span>
+          {% endfor %}
+        </div>
+        {% else %}
+        {{ form.entry_price(class="form-control form-control-lg") }}
+        {% endif %}
+      </div>
+
+      <div class="form-group">
+        {{ form.stop_loss.label(class="form-control-label") }}
+        {% if form.stop_loss.errors %}
+        {{ form.stop_loss(class="form-control form-control-lg is-invalid") }}
+        <div class="invalid-feedback">
+          {% for error in form.stop_loss.errors %}
+          <span>{{ error }}</span>
+          {% endfor %}
+        </div>
+        {% else %}
+        {{ form.stop_loss(class="form-control form-control-lg") }}
+        {% endif %}
+      </div>
+
+      <div class="form-group">
+        {{ form.take_profit.label(class="form-control-label") }}
+        {% if form.take_profit.errors %}
+        {{ form.take_profit(class="form-control form-control-lg is-invalid") }}
+        <div class="invalid-feedback">
+          {% for error in form.take_profit.errors %}
+          <span>{{ error }}</span>
+          {% endfor %}
+        </div>
+        {% else %}
+        {{ form.take_profit(class="form-control form-control-lg") }}
+        {% endif %}
+      </div>
+
+      <div class="form-group">
+        {{ form.exit_price.label(class="form-control-label") }}
+        {% if form.exit_price.errors %}
+        {{ form.exit_price(class="form-control form-control-lg is-invalid") }}
+        <div class="invalid-feedback">
+          {% for error in form.exit_price.errors %}
+          <span>{{ error }}</span>
+          {% endfor %}
+        </div>
+        {% else %}
+        {{ form.exit_price(class="form-control form-control-lg") }}
+        {% endif %}
+      </div>
+
+      <div class="form-group">
+        {{ form.notes.label(class="form-control-label") }}
+        {% if form.notes.errors %}
+        {{ form.notes(class="form-control form-control-lg is-invalid") }}
+        <div class="invalid-feedback">
+          {% for error in form.notes.errors %}
+          <span>{{ error }}</span>
+          {% endfor %}
+        </div>
+        {% else %}
+        {{ form.notes(class="form-control form-control-lg") }}
+        {% endif %}
+      </div>
+
+      <div class="form-group">
+        {{ form.date.label(class="form-control-label") }}
+        {% if form.date.errors %}
+        {{ form.date(class="form-control form-control-lg is-invalid") }}
+        <div class="invalid-feedback">
+          {% for error in form.date.errors %}
+          <span>{{ error }}</span>
+          {% endfor %}
+        </div>
+        {% else %}
+        {{ form.date(class="form-control form-control-lg") }}
+        {% endif %}
+      </div>
+
+    </fieldset>
+    <div class="form-group">
+      {{ form.submit(class="btn btn-outline-info") }}
+    </div>
+  </form>
+</div>
 {% endblock content %}
