@@ -1,6 +1,6 @@
-from flask import render_template, url_for, flash, redirect, current_user
+from flask import render_template, url_for, flash, redirect
 from cryptohub import app
-from cryptohub.forms import SpotTradeForm, PerpetualTradeForm
+from cryptohub.forms import RegistrationForm, LoginForm, SpotTradeForm, PerpetualTradeForm
 from cryptohub.models import User, Spot, Perpetual
 
 @app.route('/')
@@ -10,11 +10,19 @@ def home():
 
 @app.route('/register')
 def register():
-    return render_template('register.html')
+    form = RegistrationForm()
+    if form.validate_on_submit():
+        flash('account created')
+        user = User(username=form.username.data)
+        db.session.add(user)
+        return redirect(url_for('home'))
+    return render_template('register.html', form=form)
 
 @app.route('/login')
 def login():
-    return render_template('login.html')
+    form = LoginForm()
+
+    return render_template('login.html', form=form)
 
 @app.route('/spot')
 def spot():
@@ -29,8 +37,7 @@ def spot():
                         price=form.price.data,
                         quantity=form.quantity.data,
                         fee_quantity=form.fee_quantity.data,
-                        fee_currency=form.fee_currency.data,
-                        user_id=current_user.id)
+                        fee_currency=form.fee_currency.data)
         db.session.add(spot_trade)
         db.session.commit()
         # return redirect(url_for('spot'))
@@ -52,8 +59,7 @@ def perpetual():
                             stop_loss=form.entry_price.data,
                             take_profit=form.take_profit.data,
                             exit_price=form.exit_price.data,
-                            notes=form.notes.data,
-                            user_id=current_user.id)
+                            notes=form.notes.data)
         db.session.add(perpetual_trade)
         db.session.commit()
     return render_template("perpetual.html", form=form)
